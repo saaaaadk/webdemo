@@ -1,0 +1,20 @@
+{%extends "./views/layout.html"%}
+{%block content%}
+<p>{{title}}</p>
+<ul>
+    {%for x in studentList%}
+    <li>{{x}}</li>
+    {%endfor%}
+</ul>
+<!--{%if login%}-->
+<!--<p>welcome {{title}}</p>-->
+<!--{%else%}-->
+<!--<p>sorry</p>-->
+<!--{%endif%}-->
+{% if login %}
+<p>welcome,{{title}}</p>
+{% else %}
+<p>sorry</p>
+{% endif %}
+{%include "./views/footer.html"%}
+{%endblock%}
