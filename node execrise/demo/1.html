@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/problem" method="post">
+    username :<label for="username"></label><input type="text" required id="username"> <br>
+    studentId : <label for="password"></label><input type="text" required id="password"><br>
+    grade:
+    <div class="grade">
+        <label><input type="radio" name="grade" value="1" required>大一</label>
+        <label><input type="radio" name="grade" value="2">大二</label>
+        <label><input type="radio" name="grade" value="3">大三</label>
+        <label><input type="radio" name="grade" value="4">大四</label>
+    </div>
+    <br>
+    phoneNumber: <input type="text" id="phone" required>
+    <br>
+    problemSet:
+    <label><input type="radio" name="problem" value="1" required>食堂问题</label>
+    <label><input type="radio" name="problem" value="2">教务问题</label>
+    <label><input type="radio" name="problem" value="3">学工问题</label>
+    <label><input type="radio" name="problem" value="4">其他问题</label>
+    <br>
+    questions: <input type="text" id="questions" required style="width: 400px;height: 100px">
+    <br>
+    submit:<input type="submit" id="btn">
+</form>
+<script src="jquery/jquery.js"></script>
+<script>
+
+    let username = document.querySelector("#username");
+    let password = document.querySelector("#password");
+    let phone = document.querySelector("#phone");
+    let txt = document.querySelector("#questions");
+    let btn = document.querySelector("#btn");
+    btn.onclick = function () {
+        console.log()
+        if (checkusername(username) !== true) alert("用户名在2-6字符");
+        if (checkpassword(password) !== true) alert("学号长度8字符");
+        if (checkphone(phone) !== true) alert("手机好长度11字符");
+        if (checktxt(txt) !== true) alert("填写内容产犊大于500");
+        return false;
+    }
+
+    function checkusername() {
+        // console.log(username)
+        console.log($('#username').val().length);
+        return !($('#username').val().length < 2 || $('#username').val().length > 6);
+    }
+
+    function checkpassword() {
+        // console.log(password.innerText.length);
+        console.log($('#password').val().length);
+        return $('#password').val().length === 8;
+
+    }
+
+    function checkphone() {
+        console.log($('#phone').val().length);
+        return $('#phone').val().length === 11;
+    }
+
+    function checktxt() {
+        console.log($('#question').val().length);
+        return $('#question').val().length <= 5;
+    }
+</script>
+</body>
+</html>

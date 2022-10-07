@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>table模块快速使用</title>
+  <link rel="stylesheet" href="layui/css/layui.css" media="all">
+</head>
+<body>
+
+<table id="demo" lay-filter="test"></table>
+
+<script src="layui/layui.js"></script>
+<script>
+  layui.use('table', function () {
+    var table = layui.table;
+    //第一个实例
+    table.render({
+      elem: '#demo'
+      , height: 500
+      , url: 'data02.json' //数据接口
+      , page: true //开启分页
+      , cols: [[ //表头
+        // {fixed: "left", type: "checkbox"},
+        {type: 'checkbox',fixed: 'left'},
+        {field: 'id', title: '商品ID', width: 150, sort: true,totalRow: true }
+        , {field: 'description', title: '商品描述', width: 150}
+        , {field: 'price', title: '商品价格', width: 150, sort: true,totalRow:true}
+        , {field: 'stock', title: '商品库存', width: 150}
+        , {field: 'categorylevelone', title: '一级分类', width: 90}
+        , {field: 'categoryleveltwo', title: '二级分类', width: 90, sort: true}
+        , {field: 'categorylevelthree', title: '三级分类', width: 90, sort: true}
+        , {field: 'fileName', title: '商品图片', width: 80}
+        , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
+      ]],pages:true
+    });
+  });
+</script>
+</body>
+</html>

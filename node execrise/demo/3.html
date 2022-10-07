@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>carousel模块快速使用</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <style>
+        .layui-carousel div div img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-carousel" id="test1">
+    <div carousel-item>
+        <div><img src="static/0.jpg" alt=""></div>
+        <div><img src="static/1.jpg" alt=""></div>
+        <div><img src="static/3.jpg" alt=""></div>
+        <div><img src="static/2.jpg" alt=""></div>
+        <div><img src="static/5.jpg" alt=""></div>
+    </div>
+</div>
+<!-- 条目中可以是任意内容，如：<img src=""> -->
+
+</body>
+
+<script src="layui/layui.js"></script>
+<script>
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , arrow: 'hover' //始终显示箭头
+            // ,anim: 'updown' //切换动画方式
+            , full: true
+        });
+        // carousel.on('change(test1)', function (obj) { //test1来源于对应HTML容器的 lay-filter="test1" 属性值
+        //     console.log(obj.index); //当前条目的索引
+        //     console.log(obj.prevIndex); //上一个条目的索引
+        //     console.log(obj.item); //当前条目的元素对象
+        // });
+
+    });
+</script>
+</html>
