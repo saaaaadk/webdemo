@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <span :title="tem"></span>
+    {{ message }}
+</div>
+
+<button v-on:click="add">add</button>
+
+<script>
+
+    // const {createApp} = Vue
+
+    const createApp =
+        {
+            data() {
+                return {
+                    message: 1,
+                    tem:"hello vue"
+                }
+            }, mounted() {
+                setInterval(() => {
+                    this.message++
+                }, 1000)
+            }
+            ,methods:{
+                add(){
+                    this.message+=10;
+                }
+            }
+        }
+    Vue.createApp(createApp).mount('#app')
+</script>
+
+</body>
+</html>
