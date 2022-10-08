@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="greet">btn1</button>
+    <hr>
+    <button @click="say('hi',$event)">
+        say hi
+    </button>
+    <button @click="say('hello',$event)">
+        say hello
+    </button>
+    <input @keyup.enter="submit">tijiao</input>
+    <br>
+    <input @keyup.shift.enter="clear" v-model="claer">zheshi</input>
+    <input type="radio" id="one" value="one" v-model="picked">
+    <label for="one">one</label>
+    <br>
+    <input type="radio" id="two" value="two" v-model="picked">
+    <label for="two">two</label>
+    <br>
+    <span>picked:{{picked}}</span>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const root = {
+        data() {
+            return {
+                claer: 'xxx',
+                picked:''
+            }
+        }, methods: {
+            greet(e) {
+                console.log(e)
+                alert(e.target.tagName)
+            }, say(x, e) {
+                alert("nihao" + x)
+                console.log(e)
+            }, submit() {
+                console.log('xx')
+            }, clear() {
+                this.claer = ''
+            }
+        }
+    }
+    Vue.createApp(root).mount("#app")
+</script>
+</body>
+</html>
