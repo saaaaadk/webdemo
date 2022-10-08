@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+
+        .danger {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="{active:isactive,danger:isdanger}">
+        hello vue!
+    </div>
+    <div :class="[active2,danger2]"></div>
+    <button @click="change">btn</button>
+    <div :style="[style1,style2]">yangshi</div>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const root = {
+        data() {
+            return {
+                isactive: false,
+                isdanger: false,
+                active2: 'active',
+                danger2: 'danger',
+                style1:{
+                    color:'pink'
+                },style2:{
+                    background:'black'
+                }
+            }
+        }, methods: {
+            change() {
+                this.isactive = !this.isactive
+                this.isdanger = !this.isdanger
+                this.active2 = ''
+                this.danger2 = ''
+            }
+        }
+    }
+    Vue.createApp(root).mount("#app")
+</script>
+</body>
+</html>

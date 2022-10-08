@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span>{{message}}</span>
+    <br>
+    <span v-once>{{message}}</span>
+    <button @click="change">change</button>
+    <hr>
+    <p>{{html}}</p>
+    <p v-html="html"></p>
+    <hr>
+    <p>Using text interpolation: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    <hr>
+    <button :name="message" :disabled="flag">btn</button>
+    <p>{{message}}</p>
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const createApp = {
+        data(){
+            return{
+                message:"hello vue",
+                html:`<h1>html</h1>`,
+                rawHtml:`tem`,
+                flag:true
+            }
+        },methods:{
+            change(){
+                this.message="hello"
+            }
+        }
+    }
+    Vue.createApp(createApp).mount("#app")
+</script>
+</body>
+</html>

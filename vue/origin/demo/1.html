@@ -8,33 +8,83 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 <div id="app">
-    <span :title="tem"></span>
-    {{ message }}
+    <span :title="tem">{{ count }}</span>
+    <button @click="add">add</button>
+    <hr>
+    <p>{{message}}</p>
+    <input v-model="formData.username">
+    <br>
+    <input v-model="formData.password">
+    <button @click="submit">submit</button>
+    <hr>
+    <div v-if="show">
+        v-if show
+    </div>
+    <button @click="show=!show">hide</button>
+    <hr>
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+    <hr>
+<!--        <ol>-->
+<!--            <todo-item></todo-item>-->
+<!--            <todo-item></todo-item>-->
+<!--            <todo-item></todo-item>-->
+<!--        </ol>-->
+    <ol>
+        <todo-item v-for="item in todos" :todo="item" ></todo-item>
+    </ol>
 </div>
 
-<button v-on:click="add">add</button>
-
 <script>
-
-    // const {createApp} = Vue
-
+    const TodoItem = {
+        props: ['todo'],
+        // template: `<li>this is a todo</li>   `
+        template: `
+          <li>{{ todo.text }}---{{user}}</li>
+        `,
+        data() {
+            return{
+                user:"hello"
+            }
+        }
+    }
     const createApp =
         {
+            components: {
+                TodoItem: TodoItem
+            },
             data() {
                 return {
-                    message: 1,
-                    tem:"hello vue"
+                    count: 1,
+                    tem: "hello vue",
+                    message: "hello world",
+                    formData: {
+                        username: '',
+                        password: ''
+                    }, todos: [{
+                        text: "1"
+                    }, {
+                        text: "2",
+                    }, {
+                        text: "bed"
+                    }
+                    ]
                 }
             }, mounted() {
                 setInterval(() => {
-                    this.message++
+                    this.count++
                 }, 1000)
-            }
-            ,methods:{
-                add(){
-                    this.message+=10;
+            }, methods: {
+                add() {
+                    this.count += 10;
+                }, submit() {
+                    console.log(this.formData)
                 }
             }
+
         }
     Vue.createApp(createApp).mount('#app')
 </script>

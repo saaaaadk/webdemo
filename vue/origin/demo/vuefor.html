@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(good,index) in goods">
+            {{index}}--{{good.name}}{{good.price}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(value,name,index) in myobj">
+            {{index}}--{{name}}--{{value}}
+<!--            &#45;&#45;&#45;&#45;-->
+        </li>
+    </ul>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    let root = {
+        data() {
+            return {
+                goods: [{name: 'xixi', price: 2}, {name: 'haha', price: 3}, {name: 'leilei', price: 1},],
+                myobj:{
+                    xixi:"xixi",
+                    haha:"haha",
+                    leilei:"leilei",
+                }
+            }
+
+        }
+    }
+    Vue.createApp(root).mount("#app")
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span>{{publishedBook}}</span>
+    <hr>
+    <span>{{publishedBook}}</span>
+    <hr>
+    <span>{{publishedBook}}</span>
+    <hr>
+    <span>{{date}}</span>
+    <br>
+    <input v-model="firstName">
+    <br>
+    <input v-model="lastName">
+    <br>
+    fullName : <p>{{fullName}}</p>
+    fullName2: <p>{{fullName2}}</p>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const root = {
+        data() {
+            return {
+                author: {
+                    name: "lei",
+                    books: [
+                        "xixi", "haha", "leilei"
+                    ]
+                },
+                firstName: "lei",
+                lastName: "xi",
+                fullName: '',
+            }
+        }, mounted() {
+            setInterval(() => {
+                this.author.books.push("a")
+            }, 1000)
+        }, watch: {
+            firstName(newData, oldData) {
+                this.fullName = newData + '' + this.lastName;
+            }, lastName(newDate, oldData) {
+                this.fullName = this.firstName + '' + newDate
+            }
+        }
+        , computed: {
+            publishedBook() {
+                return this.author.books.length;
+            }, date() {
+                return new Date();
+            }
+            , fullName2() {
+                return this.firstName + this.lastName
+            }
+        }
+    }
+    Vue.createApp(root).mount("#app")</script>
+</body>
+</html>
