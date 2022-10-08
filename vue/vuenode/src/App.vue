@@ -10,6 +10,11 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  mounted() {
+    // setTimeout(()=>{
+    //   this.$router.push({name:'about'})
+    // },1000)
   }
 }
 </script>
