@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{message + "nihao"}}</h1>
+      <img :src="url" alt="">
+      <button v-on:click="say"> button</button>
+      <button @click="say">tem</button>
+      <button @click="change">change</button>
+  </div>
+  <h2>hello world</h2>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+  new Vue({
+    el:"#app",
+    data:{
+      message:"hello world",
+        url:"../public/imgs/1.jpg"
+    },
+    methods:{
+      say(){
+          alert("hello")
+      }
+      ,change(){
+          this.url = "../public/imgs/a.jpg"
+            // console.log(this.data.url)
+        }
+    }
+  })
+  </script>
+</body>
+</html>
