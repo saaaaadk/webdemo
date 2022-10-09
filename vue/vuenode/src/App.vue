@@ -23,38 +23,12 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import {Delete} from '@element-plus/icons'
-import {ref} from 'vue'
+import datepicker from "@/composables/datepicker";
 
 export default {
   setup() {
-    const value = ref('')
-    const shortcuts = [
-      {
-        text: 'Today',
-        value: new Date(),
-      },
-      {
-        text: 'Yesterday',
-        value: () => {
-          const date = new Date()
-          date.setTime(date.getTime() - 3600 * 1000 * 24)
-          return date
-        },
-      },
-      {
-        text: 'A week ago',
-        value: () => {
-          const date = new Date()
-          date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
-          return date
-        },
-      },
-    ]
-    const disabledDate = (time) => {
-      return time.getTime() > Date.now()
-    }
     return {
-      count: 10, disabledDate, shortcuts, value
+      count: 10, ...datepicker()
     }
   },
   data() {
