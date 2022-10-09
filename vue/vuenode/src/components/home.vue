@@ -1,15 +1,15 @@
 <template>
   <br>
-this is home!
+  this is home!{{ count }}
+  <button @click="fun1">click</button>
 </template>
 
-<script>
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "home"
+<script setup>
+import {ref} from 'vue'
+
+
+let count = ref(5)
+let fun1 = function () {
+  console.log('click')
 }
 </script>
-
-<style scoped>
-
-</style>

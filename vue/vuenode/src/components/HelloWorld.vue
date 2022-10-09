@@ -9,7 +9,6 @@
     |
     <router-link :to="{name:'user',params:{id:13}}">13user</router-link>
     <router-view></router-view>
-    <router-view name="leftside"></router-view>
     <!--    <p>-->
     <!--      For a guide and recipes on how to configure / customize this project,<br>-->
     <!--      check out the-->
